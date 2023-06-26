@@ -1,19 +1,15 @@
 object Q_02 {
   def main(args: Array[String]): Unit = {
-    printf("Enter the number of strings = ")
-    var n = scala.io.StdIn.readInt()
-
-    var a = 0
-
-    for(a <- 1 to n) {
-      var str = scala.io.StdIn.readLine("Enter the string : ")
-      check_str(str)
-    }
+    var str = scala.io.StdIn.readLine("Enter the string : ")
+    checkStr(str.split(" "))
   }
 
-  def check_str(str: String): Unit = {
-    if (str.length() > 5) {
-      println(str)
+  def checkStr(str: Array[String]): Unit = {
+    if (str.length > 0) {
+      if (str(0).length > 5) {
+        print(str(0) + " ")
+      }
+      checkStr(str.slice(1, str.length))
     }
   }
 
