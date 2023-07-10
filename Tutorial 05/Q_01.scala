@@ -3,21 +3,21 @@ object Q_01 {
     printf("Enter a number : ")
     var num = scala.io.StdIn.readInt()
 
-    if (isprime(num, 2)) {
-      println("Yes")
-    }
-    else {
-      println("No")
-    }
+    println(isprime(num))
   }
 
-  def isprime(n: Int, i: Int): Boolean = i match {
-    case x if (n < i) => false
+  def GCD(a: Int, b: Int): Int = b match {
+    case 0 => a
+    case x if x > a => GCD(x, a)
+    case _ => GCD(b, a%b)
+  }
+
+  def isprime(n: Int, i: Int = 2): Boolean = i match {
     case x if (n == i) => true
-    case x if (n % i == 0) => false
-    case x if (i * i > n) => true
+    case x if GCD(n, x) > 1 => false
     case _ => isprime(n, i + 1)
   }
 }
+
 
 
